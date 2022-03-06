@@ -1,11 +1,10 @@
-import {FC, isValidElement} from "react";
+import {cloneElement, FC, isValidElement} from "react";
 import "./index.css"
 import classNames from "classnames";
 import {Typography} from "@mui/material";
-import {ReactJSXElement} from "@emotion/react/types/jsx-namespace";
 
 interface CSSTooltipProps {
-    text?: string | ReactJSXElement
+    text: string | JSX.Element
     delay?: number
     maxWidth?: number
 }
@@ -13,7 +12,7 @@ interface CSSTooltipProps {
 export const CSSTooltip: FC<CSSTooltipProps> = ({children, text, delay, maxWidth}) => {
     return <>
         <div className={"tooltip"}>
-            {children}
+            {isValidElement(children) && cloneElement(children, {className: "focus"})}
 
             {isValidElement(text) && <>
                 <div style={{

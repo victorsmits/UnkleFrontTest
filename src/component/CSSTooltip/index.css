@@ -1,4 +1,4 @@
 
-.tooltip:hover .tooltiptext {
+.tooltip:hover .tooltiptext, .focus:focus + .tooltiptext {
     opacity: 1;
 }
